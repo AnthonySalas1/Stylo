@@ -14,19 +14,21 @@ app-root,
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #ffffff !important; /* Brighter base */
+  background-color: #ffffff !important;
+  /* Brighter base */
   box-shadow: none !important;
   outline: none !important;
   border: none !important;
 }
 
 * {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 body {
-  color: #1a1a1a; /* Darker text */
+  color: #1a1a1a;
+  /* Darker text */
   font-family: var(--font-body);
   line-height: 1.6;
 }
@@ -100,13 +102,16 @@ a:hover {
 }
 
 /* Promotions Grid */
-.promo-grid, .contact-grid {
+.promo-grid,
+.contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
-.promo-card, .contact-info, .trend-item {
+.promo-card,
+.contact-info,
+.trend-item {
   background: white;
   padding: 2rem;
   border-radius: 4px;
@@ -122,4 +127,4 @@ a:hover {
   border-radius: 2px;
   display: inline-block;
   margin-bottom: 1rem;
-}
+}
