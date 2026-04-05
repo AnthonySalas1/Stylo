@@ -1,0 +1,45 @@
+<section class="promotions-accordion">
+    <!-- Intro/Title Panel -->
+    <div class="promo-panel title-panel"
+         [class.active]="activePromoIndex === -1"
+         (click)="setActivePromo(-1)">
+      <div class="panel-content">
+        <h2 class="section-title">Promociones Exclusivas</h2>
+        <p class="click-hint">Click para descubrir</p>
+      </div>
+    </div>
+
+    <!-- Promo Panels -->
+    <div class="promo-panel"
+         [class.active]="activePromoIndex === 0"
+         (click)="setActivePromo(0)">
+      <div class="panel-content">
+        <div class="promo-icon">🎁</div>
+        <span class="discount-badge">20% OFF</span>
+        <h3>Lunes de Corte</h3>
+        <p>Inicia la semana con un nuevo look. Aplica en cortes de dama y caballero todos los lunes del mes.</p>
+      </div>
+    </div>
+
+    <div class="promo-panel"
+         [class.active]="activePromoIndex === 1"
+         (click)="setActivePromo(1)">
+      <div class="panel-content">
+        <div class="promo-icon">✨</div>
+        <span class="discount-badge">15% OFF</span>
+        <h3>Color & Brillo</h3>
+        <p>Descuento especial en tintes completos al agendar tu cita los jueves. ¡Resalta tu brillo natural!</p>
+      </div>
+    </div>
+
+    <div class="promo-panel"
+         [class.active]="activePromoIndex === 2"
+         (click)="setActivePromo(2)">
+      <div class="panel-content">
+        <div class="promo-icon">💆‍♀️</div>
+        <span class="discount-badge">PROMO</span>
+        <h3>Tratamiento VIP</h3>
+        <p>En la compra de cualquier Laceado, obtén un Botox Capilar de cortesía para una hidratación profunda.</p>
+      </div>
+    </div>
+</section>

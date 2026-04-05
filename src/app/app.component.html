@@ -1,0 +1,142 @@
+<div class="wrapper">
+  <!-- Crossfade GIF backgrounds -->
+  <img *ngFor="let gif of backgroundGifs; let i = index" [src]="gif" class="bg-video"
+    [class.active-bg]="i === currentBgIndex" alt="Fondo Animado">
+
+  <div class="bg-overlay"></div>
+
+  <!-- Beauty salon GIF: white wall, mirror, hair styling -->
+  <aside>
+    <div class="logo">
+      <img class="logo-img" src="brand/logoSoloAJ.png" width="100" height="100" alt="Logo AJ">
+    </div>
+    <ul class="menu">
+      <li>
+        <button id="todos" class="boton-menu boton-categoria" [class.active]="activeSection === 'inicio'"
+          (click)="setActiveSection('inicio')"><i></i>
+          INICIO</button>
+      </li>
+      <li>
+        <button id="servicios" class="boton-menu boton-categoria" [class.active]="activeSection === 'servicios'"
+          (click)="setActiveSection('servicios')"><i></i>
+          SERVICIOS</button>
+      </li>
+      <li>
+        <button id="promociones" class="boton-menu boton-categoria" [class.active]="activeSection === 'promociones'"
+          (click)="setActiveSection('promociones')"><i></i>
+          PROMOCIONES</button>
+      </li>
+      <li>
+        <button id="tendencias" class="boton-menu boton-categoria" [class.active]="activeSection === 'tendencias'"
+          (click)="setActiveSection('tendencias')"><i></i>
+          TENDENCIAS</button>
+      </li>
+      <li>
+        <button id="contacto" class="boton-menu boton-categoria" [class.active]="activeSection === 'contacto'"
+          (click)="setActiveSection('contacto')"><i></i>
+          CONTACTO</button>
+      </li>
+    </ul>
+
+    <div class="navbar-socials">
+      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+    </div>
+
+    <footer class="aside-footer">
+      <p>&copy; 2024 AJ Golden Glow.</p>
+    </footer>
+  </aside>
+
+  <main class="main-layout">
+    <div class="content-host">
+      <ng-container *ngIf="activeSection === 'inicio'">
+        <div class="home-banners-container">
+          <div class="home-banner" *ngFor="let banner of homeBanners">
+            <img [src]="banner.image" alt="Banner Background" class="home-banner-bg">
+            <div class="home-banner-overlay">
+              <span class="home-banner-tag">{{banner.tag}}</span>
+              <h3>{{banner.title}}</h3>
+              <p>{{banner.subTitle}}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- VISTA SERVICIOS -->
+      <ng-container *ngIf="activeSection === 'servicios'">
+        <app-services></app-services>
+      </ng-container>
+
+      <!-- VISTA PROMOCIONES -->
+      <ng-container *ngIf="activeSection === 'promociones'">
+        <app-promotions></app-promotions>
+      </ng-container>
+
+      <!-- VISTA CONTACTO -->
+      <ng-container *ngIf="activeSection === 'contacto'">
+        <app-contact></app-contact>
+      </ng-container>
+
+      <!-- VISTA TENDENCIAS -->
+      <ng-container *ngIf="activeSection === 'tendencias'">
+        <app-trends></app-trends>
+      </ng-container>
+    </div>
+
+    <!-- POSICION 2: Arriba Derecha (Títuo) -->
+    <div class="hero-content">
+      <div class="hero-title-container">
+        <img class="logo-img-principal" src="brand/logoSoloAJ.png" alt="Logo AJ">
+        <div>
+          <h1>Golden Glow</h1>
+          <h2>Estilismo</h2>
+        </div>
+      </div>
+    </div>
+    <!-- POSICION 4: Abajo Derecha (Banner) -->
+    <div class="banner-content">
+      <div class="insta-card">
+
+        <!-- Header -->
+        <div class="insta-header">
+          <div class="insta-avatar">
+            <img src="brand/logoSoloAJ.png" alt="Avatar">
+          </div>
+          <div class="insta-user-info">
+            <span class="insta-username">ajGoldenGlow</span>
+            <span class="insta-location">Esta semana</span>
+          </div>
+          <i class="bi bi-three-dots insta-options"></i>
+        </div>
+
+        <!-- Image Main Container -->
+        <div class="insta-image-container">
+          <img src="trends/salon_balayage_demo.png" alt="Balayage Glam">
+        </div>
+
+        <!-- Footer / Actions -->
+        <div class="insta-footer">
+          <div class="insta-actions">
+            <div>
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-chat"></i>
+              <i class="bi bi-send"></i>
+            </div>
+            <i class="bi bi-bookmark insta-save"></i>
+          </div>
+          <div class="insta-likes">Les gusta a <strong>victoria_v</strong> y <strong>249 más</strong></div>
+          <div class="insta-caption">
+            <strong>ajGoldenGlow</strong> Creando luz y movimiento estelar 🍯✨ Mira el espectacular resultado de este
+            Balayage fusionado con un Butterfly Cut. Agenda tu cita! #balayage #ajgoldenglow #hairgoals
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<router-outlet></router-outlet>

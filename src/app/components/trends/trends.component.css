@@ -1,0 +1,102 @@
+.trends-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Grid 2x2 para acomodar los 4 banners limpiamente */
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+    background: transparent;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.trends-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.trend-banner {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 24px;
+    padding: 0; /* Eliminado el padding para que la imagen ocupe todo */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
+}
+
+.trend-banner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+}
+
+.trend-items {
+    display: flex;
+    flex-direction: row;
+    gap: 0; /* Sin espacio entre imágenes */
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.trend-items::-webkit-scrollbar {
+    display: none;
+}
+
+.trend-card {
+    position: relative;
+    flex: 0 0 100%;
+    height: 100%;
+    min-height: 350px; /* Un poco más alto para impacto visual */
+    background: rgba(255, 255, 255, 0.03);
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+.trend-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.trend-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+.category-tag {
+    color: var(--accent-color);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.trend-overlay h4 {
+    font-family: var(--font-main);
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.trend-overlay p {
+    font-family: var(--font-main);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+}

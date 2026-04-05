@@ -1,0 +1,19 @@
+<div class="services-container">
+  <div class="service-card" *ngFor="let s of services">
+    <div class="service-image-container">
+      <img [src]="s.imagen" [alt]="s.title" class="service-image">
+      <div class="service-price-badge">{{s.precio}}</div>
+    </div>
+    <div class="service-content">
+      <div class="service-header">
+        <h3>{{s.title}}</h3>
+        <div class="service-line"></div>
+      </div>
+      <p class="service-description">{{s.description}}</p>
+      <button class="service-cta">
+        <span>Agendar Cita</span>
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

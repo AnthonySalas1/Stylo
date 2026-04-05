@@ -1,0 +1,63 @@
+<div class="trends-container">
+
+  <div class="trend-banner">
+    <div class="trend-items">
+      @for (item of category001; track item.id) {
+      <div class="trend-card">
+        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
+        <div class="trend-overlay">
+          <div class="category-tag">Trends 2026</div>
+          <h4>{{item.title}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="trend-banner">
+    <div class="trend-items">
+      @for (item of category002; track item.id) {
+      <div class="trend-card">
+        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
+        <div class="trend-overlay">
+          <div class="category-tag">Insta Trends</div>
+          <h4>{{item.title}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="trend-banner">
+    <div class="trend-items">
+      @for (item of category003; track item.id) {
+      <div class="trend-card">
+        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
+        <div class="trend-overlay">
+          <div class="category-tag">TikTok Trends</div>
+          <h4>{{item.title}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="trend-banner">
+    <div class="trend-items">
+      @for (item of category004; track item.id) {
+      <div class="trend-card">
+        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
+        <div class="trend-overlay">
+          <div class="category-tag">Famous Trends</div>
+          <h4>{{item.title}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+</div>

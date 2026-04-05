@@ -1,0 +1,125 @@
+/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+app-root,
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff !important; /* Brighter base */
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}
+
+* {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+body {
+  color: #1a1a1a; /* Darker text */
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: #000;
+  /* Headings black by default in light mode */
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Shared Module Styles */
+.module-section {
+  padding: 4rem 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.module-section h2 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Promotions Grid */
+.promo-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.promo-card, .contact-info, .trend-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+  border-top: 3px solid var(--accent-color);
+}
+
+.discount {
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 10px;
+  font-weight: bold;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
