@@ -1,0 +1,89 @@
+{
+  "configVersion": 1,
+  "timestamp": 1775426124307,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/index.html",
+        "/main-TSRYMD2B.js",
+        "/manifest.webmanifest",
+        "/polyfills-B6TNHZQ6.js",
+        "/styles-FZQIUKRY.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/backgrounds/OndasRubio.gif",
+        "/backgrounds/cabelloNegroMedio.gif",
+        "/backgrounds/ondasLargasCabelloLargo.gif",
+        "/brand/logo.png",
+        "/brand/logoSoloAJ.png",
+        "/icons/icon-128x128.png",
+        "/icons/icon-144x144.png",
+        "/icons/icon-152x152.png",
+        "/icons/icon-192x192.png",
+        "/icons/icon-384x384.png",
+        "/icons/icon-512x512.png",
+        "/icons/icon-72x72.png",
+        "/icons/icon-96x96.png",
+        "/trends/salon_balayage_demo.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/backgrounds/OndasRubio.gif": "af6ed0a5991d717aa350dfe88064c3a811140559",
+    "/backgrounds/cabelloNegroMedio.gif": "943f4b75b22f0bed667e5fc2dbecd72c8aa25b5b",
+    "/backgrounds/ondasLargasCabelloLargo.gif": "f11633a573ba5d679b5ea4c182ef49c7d1ae3d37",
+    "/brand/logo.png": "9827249447d90abc8558033a36df4b61f0596484",
+    "/brand/logoSoloAJ.png": "84c84ceab6923e84c0900424c0bf8dd4b233dcea",
+    "/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/index.html": "27407d964336681609df95219c6b8e0e41a694a2",
+    "/main-TSRYMD2B.js": "d4a803c71546090e53b4fc6022c9b3a084ecb800",
+    "/manifest.webmanifest": "7986e42a7506a01eea6447566230bb14774d78a8",
+    "/polyfills-B6TNHZQ6.js": "bf76ac291d7f51c1139b7edcf86b359a30c08c64",
+    "/styles-FZQIUKRY.css": "59798db64a171acae6a5afb9644b4e0519a608d2",
+    "/trends/salon_balayage_demo.png": "2b39ea298c0d3c546785113d4e8774b61576f40f"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

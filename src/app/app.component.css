@@ -21,13 +21,26 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-main);
     background-color: #0e0d0d;
     color: var(--text-color);
     overflow: hidden;
-    /* Prevent any window scroll */
     height: 100vh;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        height: auto;
+        overflow-y: visible;
+        overflow-x: hidden;
+    }
 }
 
 /* =============================================
@@ -44,6 +57,16 @@ body {
     /* Difuminado dorado más definido (menos extenso y más nítido) */
     box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9),
         inset 0 0 50px rgba(247, 189, 0, 0.5) !important;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+        border-radius: 0; /* Full screen look for mobile */
+    }
 }
 
 .bg-video {
@@ -146,6 +169,10 @@ aside {
     text-align: center;
 }
 
+.mobile-title {
+    display: none; /* Hidden by default */
+}
+
 .menu {
     list-style: none;
     flex-grow: 1;
@@ -232,6 +259,18 @@ aside {
     color: var(--text-muted);
 }
 
+.desktop-only {
+    display: flex;
+}
+
+.main-footer {
+    display: none; /* Hidden on desktop and handled per module on mobile */
+}
+
+.module-footer {
+    display: none; /* Hidden by default */
+}
+
 /* =============================================
    MAIN LAYOUT
    ============================================= */
@@ -262,6 +301,14 @@ aside {
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .content-host {
+        overflow: visible;
+        height: auto;
+        flex: none;
+    }
+}
+
 .banner-content {
     grid-area: banner;
     background-color: rgba(0, 0, 0, 0.4);
@@ -269,20 +316,39 @@ aside {
     border-radius: 32px;
     border: 1px solid rgba(212, 175, 55, 0.5);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden; /* Corta el desbordamiento del contenedor hijo */
 }
 
-/* =============================================
-   INSTAGRAM STYLE CARD
-   ============================================= */
+/* CAROUSEL CONTAINER */
+.insta-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    height: 100%;
+    width: 100%;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    cursor: grab;
+}
+
+.insta-container:active {
+    cursor: grabbing;
+}
+
+.insta-container::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+}
+
 .insta-card {
+    flex: 0 0 100%; /* Cada carta ocupa el 100% del contenedor */
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     height: 100%;
     color: #fff;
     font-family: var(--font-main);
+    background: transparent;
 }
 
 .insta-header {
@@ -535,44 +601,196 @@ app-trends {
 }
 
 @media (max-width: 768px) {
-    .wrapper {
-        flex-direction: column;
-    }
-
     aside {
         width: 100%;
         height: auto;
-        position: relative;
-        padding: 1.5rem;
-        border-right: none;
+        position: sticky;
+        top: 0;
+        margin: 0;
+        padding: 0; /* Let children handle padding for full-width look */
+        flex-direction: column;
+        border-radius: 0 0 24px 24px;
+        z-index: 2000;
+        border: none;
+        border-bottom: 2px solid var(--accent-color);
+        background-color: #0c0c0ced;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    .mobile-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 1rem;
         border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    .logo {
-        margin-bottom: 1.5rem;
+    .mobile-title-main {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
-    .logo-img-principal {
-        width: 50px;
-        height: 50px;
+    .mobile-title-main img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .mobile-title h1 {
+        font-size: 1rem;
+        color: #fce883;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 0;
+        line-height: 1.1;
+        font-weight: 600;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .mobile-title p {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    /* Social Fan Styles */
+    .social-fan-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .social-toggle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: var(--accent-color);
+        border: none;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .social-fan-container.open .social-toggle {
+        transform: rotate(90deg);
+        background: #fff;
+    }
+
+    .social-fan-links {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        gap: 8px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateX(20px) scale(0.5);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .social-fan-container.open .social-fan-links {
+        pointer-events: all;
+        opacity: 1;
+        transform: translateX(-45px) scale(1);
+    }
+
+    .social-link {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: var(--accent-color);
+        color: #000;
+        transform: translateY(-3px);
+    }
+
+    .desktop-logo, .desktop-hero, .desktop-only {
+        display: none !important;
+    }
+
+    .main-footer {
+        display: none !important; /* Force hide in favor of per-module footer */
+    }
+
+    .module-footer {
+        display: block;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        width: 100%;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 1px;
     }
 
     .menu {
         flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
+        gap: 0;
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        width: 100%;
+        justify-content: space-around;
     }
 
     .boton-menu {
-        padding: 0.8rem 1rem;
-        white-space: nowrap;
+        padding: 0.4rem;
+        font-size: 1.1rem;
+        justify-content: center;
+        border-radius: 50%;
+        min-width: 35px;
+        height: 35px;
+        color: rgba(255, 255, 255, 0.5); /* Dim inactive icons */
     }
 
-    .navbar-socials,
-    .aside-footer {
+    .boton-menu.active {
+        color: #fce883;
+        background: rgba(212, 175, 55, 0.2);
+    }
+
+    .boton-menu span {
         display: none;
     }
 
+    .main-layout {
+        padding: 1rem;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .banner-content {
+        order: -1; /* Instagram first after header */
+        height: auto;
+    }
+
+    .content-host {
+        order: 0;
+    }
 }
 
 /* =============================================

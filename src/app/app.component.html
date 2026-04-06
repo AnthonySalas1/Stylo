@@ -7,45 +7,69 @@
 
   <!-- Beauty salon GIF: white wall, mirror, hair styling -->
   <aside>
-    <div class="logo">
+    <!-- Mobile Title (only visible on small screens) -->
+    <div class="mobile-title">
+      <div class="mobile-title-main">
+        <img src="brand/logoSoloAJ.png" alt="Logo AJ Small">
+        <div class="text">
+          <h1>Golden Glow</h1>
+          <p>Estilismo</p>
+        </div>
+      </div>
+      
+      <!-- Social Fan Toggle -->
+      <div class="social-fan-container" [class.open]="isSocialFanOpen">
+        <button class="social-toggle" (click)="toggleSocialFan()">
+          <i class="bi" [class.bi-share]="!isSocialFanOpen" [class.bi-x-lg]="isSocialFanOpen"></i>
+        </button>
+        <div class="social-fan-links">
+          <a href="#" class="social-link fb"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-link ig"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-link tk"><i class="bi bi-tiktok"></i></a>
+          <a href="#" class="social-link wa"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="logo desktop-logo">
       <img class="logo-img" src="brand/logoSoloAJ.png" width="100" height="100" alt="Logo AJ">
     </div>
     <ul class="menu">
       <li>
         <button id="todos" class="boton-menu boton-categoria" [class.active]="activeSection === 'inicio'"
-          (click)="setActiveSection('inicio')"><i></i>
-          INICIO</button>
+          (click)="setActiveSection('inicio')"><i class="bi bi-house"></i>
+          <span>INICIO</span></button>
       </li>
       <li>
         <button id="servicios" class="boton-menu boton-categoria" [class.active]="activeSection === 'servicios'"
-          (click)="setActiveSection('servicios')"><i></i>
-          SERVICIOS</button>
+          (click)="setActiveSection('servicios')"><i class="bi bi-scissors"></i>
+          <span>SERVICIOS</span></button>
       </li>
       <li>
         <button id="promociones" class="boton-menu boton-categoria" [class.active]="activeSection === 'promociones'"
-          (click)="setActiveSection('promociones')"><i></i>
-          PROMOCIONES</button>
+          (click)="setActiveSection('promociones')"><i class="bi bi-percent"></i>
+          <span>PROMOCIONES</span></button>
       </li>
       <li>
         <button id="tendencias" class="boton-menu boton-categoria" [class.active]="activeSection === 'tendencias'"
-          (click)="setActiveSection('tendencias')"><i></i>
-          TENDENCIAS</button>
+          (click)="setActiveSection('tendencias')"><i class="bi bi-stars"></i>
+          <span>TENDENCIAS</span></button>
       </li>
       <li>
         <button id="contacto" class="boton-menu boton-categoria" [class.active]="activeSection === 'contacto'"
-          (click)="setActiveSection('contacto')"><i></i>
-          CONTACTO</button>
+          (click)="setActiveSection('contacto')"><i class="bi bi-telephone"></i>
+          <span>CONTACTO</span></button>
       </li>
     </ul>
 
-    <div class="navbar-socials">
+    <div class="navbar-socials desktop-only">
       <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
       <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
       <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
       <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
     </div>
 
-    <footer class="aside-footer">
+    <footer class="aside-footer desktop-only">
       <p>&copy; 2024 AJ Golden Glow.</p>
     </footer>
   </aside>
@@ -62,6 +86,7 @@
               <p>{{banner.subTitle}}</p>
             </div>
           </div>
+          <footer class="module-footer">&copy; 2024 AJ Golden Glow.</footer>
         </div>
       </ng-container>
 
@@ -87,7 +112,7 @@
     </div>
 
     <!-- POSICION 2: Arriba Derecha (Títuo) -->
-    <div class="hero-content">
+    <div class="hero-content desktop-hero">
       <div class="hero-title-container">
         <img class="logo-img-principal" src="brand/logoSoloAJ.png" alt="Logo AJ">
         <div>
@@ -96,46 +121,51 @@
         </div>
       </div>
     </div>
-    <!-- POSICION 4: Abajo Derecha (Banner) -->
-    <div class="banner-content">
-      <div class="insta-card">
-
-        <!-- Header -->
-        <div class="insta-header">
-          <div class="insta-avatar">
-            <img src="brand/logoSoloAJ.png" alt="Avatar">
-          </div>
-          <div class="insta-user-info">
-            <span class="insta-username">ajGoldenGlow</span>
-            <span class="insta-location">Esta semana</span>
-          </div>
-          <i class="bi bi-three-dots insta-options"></i>
-        </div>
-
-        <!-- Image Main Container -->
-        <div class="insta-image-container">
-          <img src="trends/salon_balayage_demo.png" alt="Balayage Glam">
-        </div>
-
-        <!-- Footer / Actions -->
-        <div class="insta-footer">
-          <div class="insta-actions">
-            <div>
-              <i class="bi bi-heart"></i>
-              <i class="bi bi-chat"></i>
-              <i class="bi bi-send"></i>
+    <!-- POSICION 4: Abajo Derecha (Banner) - Solo en Inicio -->
+    <div class="banner-content" *ngIf="activeSection === 'inicio'">
+      <div class="insta-container" #instaContainer>
+        
+        <div class="insta-card" *ngFor="let trend of trends">
+          <!-- Header -->
+          <div class="insta-header">
+            <div class="insta-avatar">
+              <img src="brand/logoSoloAJ.png" alt="Avatar">
             </div>
-            <i class="bi bi-bookmark insta-save"></i>
+            <div class="insta-user-info">
+              <span class="insta-username">ajGoldenGlow</span>
+              <span class="insta-location">{{trend.title}}</span>
+            </div>
+            <i class="bi bi-three-dots insta-options"></i>
           </div>
-          <div class="insta-likes">Les gusta a <strong>victoria_v</strong> y <strong>249 más</strong></div>
-          <div class="insta-caption">
-            <strong>ajGoldenGlow</strong> Creando luz y movimiento estelar 🍯✨ Mira el espectacular resultado de este
-            Balayage fusionado con un Butterfly Cut. Agenda tu cita! #balayage #ajgoldenglow #hairgoals
+
+          <!-- Image Main Container -->
+          <div class="insta-image-container">
+            <img [src]="trend.imagen" [alt]="trend.title">
+          </div>
+
+          <!-- Footer / Actions -->
+          <div class="insta-footer">
+            <div class="insta-actions">
+              <div>
+                <i class="bi bi-heart"></i>
+                <i class="bi bi-chat"></i>
+                <i class="bi bi-send"></i>
+              </div>
+              <i class="bi bi-bookmark insta-save"></i>
+            </div>
+            <div class="insta-likes">Les gusta a <strong>beauty_obsessed</strong> y <strong>muchos más</strong></div>
+            <div class="insta-caption">
+              <strong>ajGoldenGlow</strong> {{trend.description}} ✨ Agenda tu cita! #{{trend.title.toLowerCase().replace(' ', '')}} #ajgoldenglow
+            </div>
           </div>
         </div>
 
       </div>
     </div>
+
+    <footer class="main-footer">
+      <p>&copy; 2024 AJ Golden Glow.</p>
+    </footer>
   </main>
 </div>
 

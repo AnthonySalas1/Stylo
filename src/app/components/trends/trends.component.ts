@@ -14,8 +14,13 @@ export class TrendsComponent {
   trendsTable: dtoTrends[] = TRENDS_DATA;
 
   // Agrupación dinámica por 'codTipo' para renderizar los 4 banners
-  get category001() { return this.trendsTable.filter(t => t.codTipo === '001'); }
-  get category002() { return this.trendsTable.filter(t => t.codTipo === '002'); }
-  get category003() { return this.trendsTable.filter(t => t.codTipo === '003'); }
-  get category004() { return this.trendsTable.filter(t => t.codTipo === '004'); }
+  getCategoryName(codTipo: string): string {
+    switch(codTipo) {
+      case '001': return 'Trends 2026';
+      case '002': return 'Insta Trends';
+      case '003': return 'TikTok Trends';
+      case '004': return 'Famous Trends';
+      default: return 'Trending Style';
+    }
+  }
 }

@@ -1,63 +1,14 @@
 <div class="trends-container">
-
-  <div class="trend-banner">
-    <div class="trend-items">
-      @for (item of category001; track item.id) {
-      <div class="trend-card">
-        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
-        <div class="trend-overlay">
-          <div class="category-tag">Trends 2026</div>
-          <h4>{{item.title}}</h4>
-          <p>{{item.description}}</p>
-        </div>
-      </div>
-      }
+  @for (item of trendsTable; track item.id) {
+  <div class="trend-card">
+    <img [src]="item.imagen" [alt]="item.title" class="trend-image">
+    <div class="trend-overlay">
+      <div class="category-tag">{{getCategoryName(item.codTipo)}}</div>
+      <h4>{{item.title}}</h4>
+      <p>{{item.description}}</p>
     </div>
   </div>
-
-  <div class="trend-banner">
-    <div class="trend-items">
-      @for (item of category002; track item.id) {
-      <div class="trend-card">
-        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
-        <div class="trend-overlay">
-          <div class="category-tag">Insta Trends</div>
-          <h4>{{item.title}}</h4>
-          <p>{{item.description}}</p>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-
-  <div class="trend-banner">
-    <div class="trend-items">
-      @for (item of category003; track item.id) {
-      <div class="trend-card">
-        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
-        <div class="trend-overlay">
-          <div class="category-tag">TikTok Trends</div>
-          <h4>{{item.title}}</h4>
-          <p>{{item.description}}</p>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-
-  <div class="trend-banner">
-    <div class="trend-items">
-      @for (item of category004; track item.id) {
-      <div class="trend-card">
-        <img [src]="item.imagen" [alt]="item.title" class="trend-image">
-        <div class="trend-overlay">
-          <div class="category-tag">Famous Trends</div>
-          <h4>{{item.title}}</h4>
-          <p>{{item.description}}</p>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-
+  }
+  <!-- Final mobile footer within the horizontal scroll if desired, or as a static closing element -->
+  <footer class="module-footer">&copy; 2024 AJ Golden Glow.</footer>
 </div>

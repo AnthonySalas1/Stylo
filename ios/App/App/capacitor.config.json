@@ -1,0 +1,6 @@
+{
+	"appId": "com.antonio.stylo",
+	"appName": "Stylo",
+	"webDir": "dist/stylo/browser",
+	"packageClassList": []
+}

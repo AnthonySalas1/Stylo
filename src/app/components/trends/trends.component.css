@@ -1,51 +1,18 @@
 .trends-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Grid 2x2 para acomodar los 4 banners limpiamente */
-    gap: 1.5rem;
-    padding: 2.5rem 1.5rem;
-    height: 100%;
-    overflow-y: auto;
-    background: transparent;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-}
-
-.trends-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-.trend-banner {
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    border-radius: 24px;
-    padding: 0; /* Eliminado el padding para que la imagen ocupe todo */
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
-}
-
-.trend-banner:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
-}
-
-.trend-items {
-    display: flex;
-    flex-direction: row;
-    gap: 0; /* Sin espacio entre imágenes */
-    flex: 1;
+    flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    background: transparent;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.trend-items::-webkit-scrollbar {
+.trends-container::-webkit-scrollbar {
     display: none;
 }
 
@@ -53,10 +20,9 @@
     position: relative;
     flex: 0 0 100%;
     height: 100%;
-    min-height: 350px; /* Un poco más alto para impacto visual */
-    background: rgba(255, 255, 255, 0.03);
     scroll-snap-align: start;
     overflow: hidden;
+    background: #000;
 }
 
 .trend-image {
@@ -64,6 +30,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    opacity: 0.8;
 }
 
 .trend-overlay {
@@ -71,32 +38,58 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4), transparent);
-    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 50%, transparent);
+    padding: 4rem 2rem 3rem;
+    backdrop-filter: blur(5px);
 }
 
 .category-tag {
-    color: var(--accent-color);
-    font-size: 0.7rem;
+    color: var(--accent-color, #d4af37);
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.75rem;
     font-weight: 700;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .trend-overlay h4 {
-    font-family: var(--font-main);
-    color: #fff;
-    font-size: 1.3rem;
-    margin-bottom: 0.4rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #fce883;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
     font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 .trend-overlay p {
-    font-family: var(--font-main);
+    font-family: 'Montserrat', sans-serif;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-    line-height: 1.4;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin: 0;
+    max-width: 600px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+    .trends-container {
+        height: calc(100vh - 120px); /* Ajustado para que quepa bien bajo el header móvil */
+        min-height: 450px;
+        overflow-y: visible; /* Asegurar que el carrusel no bloquee el scroll vertical de la página */
+    }
+
+    .trend-overlay h4 {
+        font-size: 1.6rem;
+    }
+
+    .trend-overlay p {
+        font-size: 0.95rem;
+    }
+
+    .trend-overlay {
+        padding: 2.5rem 1.5rem 2rem;
+    }
 }
